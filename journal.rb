@@ -2,7 +2,9 @@ $entries = ["This entry is empty, choose other one"]
 $entry = nil
 
 def entriesMenu
-  puts " = Choose an option =
+  puts "
+
+   = Choose an option =
 
   a Read entry
   b Edit entry
@@ -45,13 +47,13 @@ def entriesMenu
 end
 
 def mainMenu
-  puts "= Welcome to your Journal! =
+  puts "
+
+  = Choose an option =
 
   1 Add entry
   2 View entries
-  3 Quit
-
-  Choose an option\n\n"
+  3 Quit\n\n"
 
   menu = gets.to_i
 
