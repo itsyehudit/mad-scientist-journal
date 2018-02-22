@@ -1,5 +1,8 @@
 $entries = ["This entry is empty, choose other one"]
 $entry = nil
+$name = nil
+puts "What is your name?"
+$name = gets.chomp
 
 def entriesMenu
   puts "
@@ -48,6 +51,8 @@ end
 
 def mainMenu
   puts "
+
+  = Welcome to your Journal, #{$name}! =
 
   = Choose an option =
 
