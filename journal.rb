@@ -15,6 +15,7 @@ def entriesMenu
     puts "Choose one of #{$entries.length-1}"
     read = gets.to_i
     puts $entries[read]
+    entriesMenu
   when "b"
     puts "Choose one of #{$entries.length-1}"
     read = gets.to_i
@@ -22,10 +23,12 @@ def entriesMenu
     puts "Please edit your entry:"
     $entry = gets.to_s
     $entries.insert(read, $entry)
+    entriesMenu
   when "c"
     puts "Choose one of #{$entries.length-1}"
     read = gets.to_i
     $entries.delete_at(read)
+    entriesMenu
   when "d"
     mainMenu
   else
@@ -48,12 +51,14 @@ def mainMenu
   when 1
     $entry = gets.to_s
     $entries.push($entry)
+    mainMenu
   when 2
     entriesMenu
   when 3
     puts "Bye!"
   else
     puts "Something went wrong, try again."
+    mainMenu
   end
 end
 
