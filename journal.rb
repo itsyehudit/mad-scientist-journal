@@ -49,6 +49,7 @@ def entriesMenu
     mainMenu
   else
     puts "Something went wrong, try again."
+    entriesMenu
   end
 end
 
