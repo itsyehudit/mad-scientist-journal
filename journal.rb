@@ -4,7 +4,7 @@ def mainMenu
   puts "= Welcome to your Journal! =
 
   1 Add entry
-  2 View entries -UNAVAILABLE-
+  2 View entries
   3 Quit
 
   Choose an option\n\n"
@@ -25,3 +25,26 @@ def mainMenu
 end
 
 mainMenu
+
+def entriesMenu
+  puts " = Choose an option =
+
+  a Read entry -UNAVAILABLE-
+  b Edit entry -UNAVAILABLE-
+  c Delete entry -UNAVAILABLE-
+  d <<< Return to Main Menu\n\n"
+
+  menu2 = gets.chomp
+  case menu2
+  when "a"
+
+  when "b"
+
+  when "c"
+
+  when "d"
+    mainMenu
+  else
+    puts "Something went wrong, try again."
+  end
+end
