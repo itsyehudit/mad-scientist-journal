@@ -32,7 +32,7 @@ def entriesMenu
 
   a Read entry
   b Edit entry -UNAVAILABLE-
-  c Delete entry -UNAVAILABLE-
+  c Delete entry
   d <<< Return to Main Menu\n\n"
 
   menu2 = gets.chomp
@@ -44,7 +44,9 @@ def entriesMenu
   when "b"
 
   when "c"
-
+    puts "Choose one of #{availableEntries}"
+    read = gets.to_i
+    entries.delete_at(read)
   when "d"
     mainMenu
   else
