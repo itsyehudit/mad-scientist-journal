@@ -1,4 +1,5 @@
 entries = ["This entry is empty, choose other one"]
+availableEntries = entries.length - 1
 
 def mainMenu
   puts "= Welcome to your Journal! =
@@ -29,7 +30,7 @@ mainMenu
 def entriesMenu
   puts " = Choose an option =
 
-  a Read entry -UNAVAILABLE-
+  a Read entry
   b Edit entry -UNAVAILABLE-
   c Delete entry -UNAVAILABLE-
   d <<< Return to Main Menu\n\n"
@@ -37,7 +38,9 @@ def entriesMenu
   menu2 = gets.chomp
   case menu2
   when "a"
-
+    puts "Choose one of #{availableEntries}"
+    read = gets.to_i
+    puts entries[read]
   when "b"
 
   when "c"
