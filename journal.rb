@@ -31,7 +31,7 @@ def entriesMenu
   puts " = Choose an option =
 
   a Read entry
-  b Edit entry -UNAVAILABLE-
+  b Edit entry
   c Delete entry
   d <<< Return to Main Menu\n\n"
 
@@ -42,7 +42,12 @@ def entriesMenu
     read = gets.to_i
     puts entries[read]
   when "b"
-
+    puts "Choose one of #{availableEntries}"
+    read = gets.to_i
+    entries.delete_at(read)
+    puts "Please edit your entry:"
+    entry = gets.to_s
+    entries.insert(read, entry)
   when "c"
     puts "Choose one of #{availableEntries}"
     read = gets.to_i
