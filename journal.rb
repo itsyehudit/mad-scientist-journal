@@ -15,7 +15,15 @@ def entriesMenu
     puts "Choose one of #{$entries.length-1}"
     read = gets.to_i
     puts $entries[read]
-    entriesMenu
+    puts "Continue reading? Y/N"
+    continue = gets.chomp
+    if continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
+      puts "Choose one of #{$entries.length-1}"
+      read = gets.to_i
+      puts $entries[read]
+    else
+      entriesMenu
+    end
   when "b"
     puts "Choose one of #{$entries.length-1}"
     read = gets.to_i
