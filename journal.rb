@@ -1,7 +1,9 @@
+entries = ["This entry is empty, choose other one"]
+
 def mainMenu
   puts "= Welcome to your Journal! =
 
-  1 Add entry -UNAVAILABLE-
+  1 Add entry
   2 View entries -UNAVAILABLE-
   3 Quit
 
@@ -11,7 +13,8 @@ def mainMenu
 
   case menu
   when 1
-
+    entry = gets.to_s
+    entries.push(entry)
   when 2
     entriesMenu
   when 3
