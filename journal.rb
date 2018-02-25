@@ -24,13 +24,14 @@ class Journal
       puts @entries[read]
       puts "Continue reading? Y/N"
       continue = gets.chomp
-      if continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
+      while continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
         puts "Choose one of #{@entries.length-1}."
         read = gets.to_i
         puts @entries[read]
-      else
-        entriesMenu
+        puts "Continue reading? Y/N"
+        continue = gets.chomp
       end
+      entriesMenu
     when "b"
       puts "Choose one of #{@entries.length-1}."
       read = gets.to_i
@@ -62,7 +63,7 @@ class Journal
     = Choose an option =
 
     1 Add entry
-    2 View entriesd
+    2 View entries
     3 Quit\n\n"
 
     menu = gets.to_i
