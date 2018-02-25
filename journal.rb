@@ -2,7 +2,6 @@ class Journal
   def initialize
     @entries = ["This entry is empty, choose other one"]
     @entry = nil
-    @name = nil
   end
 
   def entriesMenu
