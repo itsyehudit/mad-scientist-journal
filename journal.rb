@@ -4,7 +4,51 @@ class Journal
     @entry = nil
   end
 
-  def entriesMenu
+  def add_entry
+    puts "Please add your entry below:"
+    @entry = gets.to_s
+    @entries.push(@entry)
+    puts "Your entry was successfuly added."
+    main_menu
+  end
+
+  def read_entry
+    puts "Choose one of #{@entries.length-1}."
+    read = gets.to_i
+    puts "Your #{read} entry:"
+    puts @entries[read]
+    puts "Continue reading? Y/N"
+    continue = gets.chomp
+    while continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
+      puts "Choose one of #{@entries.length-1}."
+      read = gets.to_i
+      puts @entries[read]
+      puts "Continue reading? Y/N"
+      continue = gets.chomp
+    end
+    view_entries_menu
+  end
+
+  def edit_entry
+    puts "Choose one of #{@entries.length-1}."
+    read = gets.to_i
+    @entries.delete_at(read)
+    puts "Please edit your #{read} entry:"
+    @entry = gets.to_s
+    @entries.insert(read, @entry)
+    puts "Your #{read} entry was successfuly edited."
+    view_entries_menu
+  end
+
+  def delete_entry
+    puts "Choose one of #{@entries.length-1}."
+    read = gets.to_i
+    @entries.delete_at(read)
+    puts "Your #{read} entry was successfuly deleted."
+    view_entries_menu
+  end
+
+  def view_entries_menu
     puts "
 
      = Choose an option =
@@ -14,47 +58,24 @@ class Journal
     c Delete entry
     d <<< Return to Main Menu\n\n"
 
-    entrMen = gets.chomp
-    case entrMen
+    entries_menu = gets.chomp
+
+    case entries_menu
     when "a"
-      puts "Choose one of #{@entries.length-1}."
-      read = gets.to_i
-      puts "Your #{read} entry:"
-      puts @entries[read]
-      puts "Continue reading? Y/N"
-      continue = gets.chomp
-      while continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
-        puts "Choose one of #{@entries.length-1}."
-        read = gets.to_i
-        puts @entries[read]
-        puts "Continue reading? Y/N"
-        continue = gets.chomp
-      end
-      entriesMenu
+      read_entry
     when "b"
-      puts "Choose one of #{@entries.length-1}."
-      read = gets.to_i
-      @entries.delete_at(read)
-      puts "Please edit your #{read} entry:"
-      @entry = gets.to_s
-      @entries.insert(read, @entry)
-      puts "Your #{read} entry was successfuly edited."
-      entriesMenu
+      edit_entry
     when "c"
-      puts "Choose one of #{@entries.length-1}."
-      read = gets.to_i
-      @entries.delete_at(read)
-      puts "Your #{read} entry was successfuly deleted."
-      entriesMenu
+      delete_entry
     when "d"
-      mainMenu
+      main_menu
     else
       puts "Something went wrong, try again."
-      entriesMenu
+      view_entries_menu
     end
   end
 
-  def mainMenu
+  def main_menu
     puts "
 
     = Welcome to your Journal! =
@@ -69,21 +90,18 @@ class Journal
 
     case menu
     when 1
-      puts "Please add your entry below:"
-      @entry = gets.to_s
-      @entries.push(@entry)
-      puts "Your entry was successfuly added."
-      mainMenu
+      add_entry
     when 2
-      entriesMenu
+      view_entries_menu
     when 3
       puts "Bye!"
     else
       puts "Something went wrong, try again."
-      mainMenu
+      main_menu
     end
   end
+
 end
 
-j1 = Journal.new
-j1.mainMenu
+my_journal = Journal.new
+my_journal.main_menu
