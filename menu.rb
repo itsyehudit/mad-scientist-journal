@@ -24,10 +24,12 @@ class Menu
     choose_n_display_entry
     puts "Continue reading? Y/N"
     continue = gets.chomp
-    while continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
+    continue = continue.downcase
+    while continue === "y" || continue === "yes"
       choose_n_display_entry
       puts "Continue reading? Y/N"
       continue = gets.chomp
+      continue = continue.downcase
     end
     view_entries_menu
   end
