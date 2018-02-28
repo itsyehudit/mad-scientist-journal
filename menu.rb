@@ -1,5 +1,3 @@
-require_relative "journal"
-
 class Menu
   def initialize
     @journal = Journal.new
@@ -105,6 +103,3 @@ class Menu
     end
   end
 end
-
-new_journal = Menu.new
-new_journal.main_menu
