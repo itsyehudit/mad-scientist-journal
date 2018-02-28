@@ -5,6 +5,13 @@ class Menu
     @journal = Journal.new
   end
 
+  def choose_n_display_entry
+    puts "Choose one of #{@journal.available_entries_count}."
+    entry_number = gets.to_i
+    puts "Your #{entry_number} entry:"
+    puts "#{@journal.entry(entry_number-1)}"
+  end
+
   def add_entry
     puts "Please add your entry below:"
     new_entry = gets.chomp
@@ -14,16 +21,11 @@ class Menu
   end
 
   def read_entry
-    puts "Choose one of #{@journal.available_entries_count}."
-    entry_number = gets.to_i
-    puts "Your #{entry_number} entry:"
-    puts "#{@journal.entry(entry_number-1)}"
+    choose_n_display_entry
     puts "Continue reading? Y/N"
     continue = gets.chomp
     while continue === "y" || continue === "Y" || continue === "YES" || continue === "yes"
-      puts "Choose one of #{@journal.available_entries_count}."
-      entry_number = gets.to_i
-      puts "#{@journal.entry(entry_number-1)}"
+      choose_n_display_entry
       puts "Continue reading? Y/N"
       continue = gets.chomp
     end
