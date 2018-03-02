@@ -1,3 +1,5 @@
+require_relative "journal"
+
 class Menu
   def initialize
     @journal = Journal.new
