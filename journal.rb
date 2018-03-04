@@ -1,24 +1,26 @@
-puts "= Welcome to your Journal! =
+class Journal
+  def initialize
+    @entries = []
+  end
 
-1. Add entry -UNAVAILABLE-
-2. Edit entry -UNAVAILABLE-
-3. Read entry
-4. Quit
+  def add_entry(new_entry)
+    @entries.push(new_entry)
+  end
 
+  def available_entries_count
+    @entries.length
+  end
 
-Choose an option\n\n"
+  def entry(entry_number)
+    @entries[entry_number]
+  end
 
-menu = gets.to_i
+  def edit_entry(entry_number, replacement_entry)
+    @entries.delete_at(entry_number)
+    @entries.insert(entry_number, replacement_entry)
+  end
 
-case menu
-when 3
-  puts "Entry 00.00.00"
-  puts "Lorem ipsum dolor sit amet,"
-  puts "gloriatur comprehensam qui ad,"
-  puts "maiorum convenire disputationi in qui,"
-  puts "id ius dico integre."
-when 4
-  puts "Bye!"
-else
-  puts "Something went wrong, try again."
+  def delete_entry(entry_number)
+    @entries.delete_at(entry_number)
+  end
 end
