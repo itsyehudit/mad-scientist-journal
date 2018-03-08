@@ -29,6 +29,7 @@ class Menu
     end
   end
 
+private
   def choose_and_display_entry
     puts "Choose one of #{@journal.available_entries_count}."
     entry_number = gets.to_i
