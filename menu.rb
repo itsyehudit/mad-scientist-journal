@@ -3,6 +3,32 @@ class Menu
     @journal = journal
   end
 
+  def main_menu
+    puts "
+
+    = Welcome to your Journal! =
+
+    = Choose an option =
+
+    1 Add entry
+    2 View entries
+    3 Quit\n\n"
+
+    menu = gets.to_i
+
+    case menu
+    when 1
+      add_entry
+    when 2
+      view_entries_menu
+    when 3
+      puts "Bye!"
+    else
+      puts "Something went wrong, try again."
+      main_menu
+    end
+  end
+
   def choose_and_display_entry
     puts "Choose one of #{@journal.available_entries_count}."
     entry_number = gets.to_i
@@ -77,29 +103,4 @@ class Menu
     end
   end
 
-  def main_menu
-    puts "
-
-    = Welcome to your Journal! =
-
-    = Choose an option =
-
-    1 Add entry
-    2 View entries
-    3 Quit\n\n"
-
-    menu = gets.to_i
-
-    case menu
-    when 1
-      add_entry
-    when 2
-      view_entries_menu
-    when 3
-      puts "Bye!"
-    else
-      puts "Something went wrong, try again."
-      main_menu
-    end
-  end
 end
