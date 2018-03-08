@@ -1,11 +1,9 @@
-require_relative "journal"
-
 class Menu
-  def initialize
-    @journal = Journal.new
+  def initialize(journal)
+    @journal = journal
   end
 
-  def choose_n_display_entry
+  def choose_and_display_entry
     puts "Choose one of #{@journal.available_entries_count}."
     entry_number = gets.to_i
     puts "Your #{entry_number} entry:"
@@ -21,12 +19,12 @@ class Menu
   end
 
   def read_entry
-    choose_n_display_entry
+    choose_and_display_entry
     puts "Continue reading? Y/N"
     continue = gets.chomp
     continue = continue.downcase
     while continue == "y" || continue == "yes"
-      choose_n_display_entry
+      choose_and_display_entry
       puts "Continue reading? Y/N"
       continue = gets.chomp
       continue = continue.downcase
