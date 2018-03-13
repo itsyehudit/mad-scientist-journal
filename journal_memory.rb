@@ -23,4 +23,7 @@ class JournalMemory
   def delete_entry(entry_number)
     @entries.delete_at(entry_number)
   end
+
+  def quit
+  end
 end

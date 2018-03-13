@@ -22,7 +22,7 @@ class Menu
     when 2
       view_entries_menu
     when 3
-      puts "Bye!"
+      quit
     else
       puts "Something went wrong, try again."
       main_menu
@@ -75,6 +75,11 @@ private
     @journal.delete_entry(entry_number-1)
     puts "Your #{entry_number} entry was successfuly deleted."
     view_entries_menu
+  end
+
+  def quit
+    puts "Bye!"
+    @journal.quit
   end
 
   def view_entries_menu
