@@ -1,7 +1,7 @@
 require "yaml"
 require_relative "editable"
 
-class JournalFile
+class FileJournal
   include Editable
 
   def initialize

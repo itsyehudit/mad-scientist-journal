@@ -1,7 +1,7 @@
 require "optparse"
 require_relative "menu"
-require_relative "journal_file"
-require_relative "journal_memory"
+require_relative "file_journal"
+require_relative "memory_journal"
 
 options = {}
 
@@ -27,9 +27,9 @@ parser.parse!
 options[:save] ||= "memory"
 
 if options[:save] == "memory"
-  journal = JournalMemory.new
+  journal = MemoryJournal.new
 elsif options[:save] == "file"
-  journal = JournalFile.new
+  journal = FileJournal.new
 end
 
 menu = Menu.new(journal)

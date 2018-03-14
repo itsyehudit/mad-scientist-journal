@@ -1,6 +1,6 @@
 require_relative "editable"
 
-class JournalMemory
+class MemoryJournal
   include Editable
 
   def initialize
