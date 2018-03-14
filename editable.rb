@@ -1,8 +1,4 @@
-class Journal
-  def initialize
-    @entries = []
-  end
-
+module Editable
   def add_entry(new_entry)
     @entries.push(new_entry)
   end
