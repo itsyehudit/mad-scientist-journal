@@ -1,7 +1,9 @@
 require "yaml"
-require_relative "modules"
+require_relative "editable"
 
 class JournalFile
+  include Editable
+
   def initialize
     @entries = []
     if File.exists?("journal_data.yaml")
@@ -12,8 +14,6 @@ class JournalFile
       end
     end
   end
-
-  include Editable
 
   def quit
     File.open("journal_data.yaml", "w") do |j|

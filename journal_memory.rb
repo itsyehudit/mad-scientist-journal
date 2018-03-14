@@ -1,11 +1,11 @@
-require_relative "modules"
+require_relative "editable"
 
 class JournalMemory
+  include Editable
+
   def initialize
     @entries = []
   end
-
-  include Editable
 
   def quit
   end
