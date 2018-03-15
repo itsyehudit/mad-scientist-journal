@@ -29,53 +29,60 @@ class Menu
     end
   end
 
-private
-  def choose_and_display_entry
-    puts "Choose one of #{@journal.available_entries_count}."
-    entry_number = gets.to_i
-    puts "Your #{entry_number} entry:"
-    puts "#{@journal.entry(entry_number-1)}"
-  end
+  private
+    def choose_and_display_entry
+      puts "Choose one of #{@journal.available_entries_count}."
+      entry_number = gets.to_i
+      puts "Date: #{@journal.date(entry_number-1)}"
+      puts "\"#{@journal.title(entry_number-1)}\""
+      puts "#{@journal.entry(entry_number-1)}"
+    end
 
-  def add_entry
-    puts "Please add your entry below:"
-    new_entry = gets.chomp
-    @journal.add_entry(new_entry)
-    puts "Your entry was successfuly added."
-    main_menu
-  end
+    def add_entry
+      puts "Please add your entry below:"
+      new_entry = gets.chomp
+      puts "Please add your title below:"
+      new_title = gets.chomp
+      new_date = Time.now
+      @journal.add_entry(new_entry, new_title, new_date)
+      puts "Your entry was successfuly added."
+      main_menu
+    end
 
-  def read_entry
-    choose_and_display_entry
-    puts "Continue reading? Y/N"
-    continue = gets.chomp
-    continue = continue.downcase
-    while continue == "y" || continue == "yes"
+    def read_entry
       choose_and_display_entry
       puts "Continue reading? Y/N"
       continue = gets.chomp
       continue = continue.downcase
+      while continue == "y" || continue == "yes"
+        choose_and_display_entry
+        puts "Continue reading? Y/N"
+        continue = gets.chomp
+        continue = continue.downcase
+      end
+      view_entries_menu
     end
-    view_entries_menu
-  end
 
-  def edit_entry
-    puts "Choose one of #{@journal.available_entries_count}."
-    entry_number = gets.to_i
-    puts "Please edit your #{entry_number} entry:"
-    replacement_entry = gets.chomp
-    @journal.edit_entry(entry_number-1, replacement_entry)
-    puts "Your #{entry_number} entry was successfuly edited."
-    view_entries_menu
-  end
+    def edit_entry
+      puts "Choose one of #{@journal.available_entries_count}."
+      entry_number = gets.to_i
+      puts "Please edit your #{entry_number} entry:"
+      replacement_entry = gets.chomp
+      puts "Please edit your #{entry_number} title:"
+      replacement_title = gets.chomp
+      replacement_date = Time.now
+      @journal.edit_entry(entry_number-1, replacement_entry, replacement_title, replacement_date)
+      puts "Your #{entry_number} entry was successfuly edited."
+      view_entries_menu
+    end
 
-  def delete_entry
-    puts "Choose one of #{@journal.available_entries_count}."
-    entry_number = gets.to_i
-    @journal.delete_entry(entry_number-1)
-    puts "Your #{entry_number} entry was successfuly deleted."
-    view_entries_menu
-  end
+    def delete_entry
+      puts "Choose one of #{@journal.available_entries_count}."
+      entry_number = gets.to_i
+      @journal.delete_entry(entry_number-1)
+      puts "Your #{entry_number} entry was successfuly deleted."
+      view_entries_menu
+    end
 
   def quit
     puts "Bye!"
