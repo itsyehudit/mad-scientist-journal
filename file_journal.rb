@@ -6,6 +6,7 @@ class FileJournal
 
   def initialize
     @entries = []
+
     if File.exists?("journal_data.yaml")
       @entries = YAML.load_file("journal_data.yaml")
     else
