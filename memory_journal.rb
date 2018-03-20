@@ -5,8 +5,6 @@ class MemoryJournal
 
   def initialize
     @entries = []
-    @titles = []
-    @dates = []
   end
 
   def quit
