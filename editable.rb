@@ -23,9 +23,9 @@ module Editable
   end
 
   def edit_entry(entry_number, replacement_content, replacement_title, replacement_date)
-    @entries.delete_at(entry_number)
-    entry = JournalEntry.new(replacement_content, replacement_title, replacement_date)
-    @entries.insert(entry_number, entry)
+    @entries[entry_number].content = replacement_content
+    @entries[entry_number].title = replacement_title
+    @entries[entry_number].date = replacement_date
   end
 
   def delete_entry(entry_number)
