@@ -35,16 +35,16 @@ class Menu
       entry_number = gets.to_i
       puts "Date: #{@journal.date(entry_number-1)}"
       puts "\"#{@journal.title(entry_number-1)}\""
-      puts "#{@journal.entry(entry_number-1)}"
+      puts "#{@journal.content(entry_number-1)}"
     end
 
     def add_entry
       puts "Please add your entry below:"
-      new_entry = gets.chomp
+      new_content = gets.chomp
       puts "Please add your title below:"
       new_title = gets.chomp
       new_date = Time.now
-      @journal.add_entry(new_entry, new_title, new_date)
+      @journal.add_entry(new_content, new_title, new_date)
       puts "Your entry was successfuly added."
       main_menu
     end
@@ -67,11 +67,11 @@ class Menu
       puts "Choose one of #{@journal.available_entries_count}."
       entry_number = gets.to_i
       puts "Please edit your #{entry_number} entry:"
-      replacement_entry = gets.chomp
+      replacement_content = gets.chomp
       puts "Please edit your #{entry_number} title:"
       replacement_title = gets.chomp
       replacement_date = Time.now
-      @journal.edit_entry(entry_number-1, replacement_entry, replacement_title, replacement_date)
+      @journal.edit_entry(entry_number-1, replacement_content, replacement_title, replacement_date)
       puts "Your #{entry_number} entry was successfuly edited."
       view_entries_menu
     end

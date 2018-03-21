@@ -10,7 +10,7 @@ module Editable
     @entries.length
   end
 
-  def entry(entry_number)
+  def content(entry_number)
     @entries[entry_number].content
   end
 
