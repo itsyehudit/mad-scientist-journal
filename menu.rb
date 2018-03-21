@@ -31,16 +31,20 @@ class Menu
 
   private
     def choose_and_display_entry
+      entry_list
+      entry_number = gets.to_i
+      puts "Date: #{@journal.date(entry_number-1)}"
+      puts "\"#{@journal.title(entry_number-1)}\""
+      puts "#{@journal.content(entry_number-1)}"
+    end
+
+    def entry_list
       puts "Choose one of your entries:"
       i = 1
       while i <= @journal.available_entries_count
         puts "#{i}. #{@journal.title(i-1)}"
         i +=1
       end
-      entry_number = gets.to_i
-      puts "Date: #{@journal.date(entry_number-1)}"
-      puts "\"#{@journal.title(entry_number-1)}\""
-      puts "#{@journal.content(entry_number-1)}"
     end
 
     def add_entry
@@ -69,12 +73,7 @@ class Menu
     end
 
     def edit_entry
-      puts "Choose one of your entries:"
-      i = 1
-      while i <= @journal.available_entries_count
-        puts "#{i}. #{@journal.title(i-1)}"
-        i +=1
-      end
+      entry_list
       entry_number = gets.to_i
       puts "Please edit your #{entry_number} entry:"
       replacement_content = gets.chomp
@@ -87,12 +86,7 @@ class Menu
     end
 
     def delete_entry
-      puts "Choose one of your entries:"
-      i = 1
-      while i <= @journal.available_entries_count
-        puts "#{i}. #{@journal.title(i-1)}"
-        i +=1
-      end
+      entry_list
       entry_number = gets.to_i
       @journal.delete_entry(entry_number-1)
       puts "Your #{entry_number} entry was successfuly deleted."
