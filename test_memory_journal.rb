@@ -59,4 +59,17 @@ describe MemoryJournal do
     expect(journal.title(0)).to eq('monday')
     end
   end
+
+  describe '#date' do
+  it 'displays date of the chosen entry' do
+    journal = MemoryJournal.new
+    title = 'monday'
+    content = 'contentcontentcontent'
+    date = '2018-03-14 03-14-00'
+
+    journal.add_entry(content, title, date)
+
+    expect(journal.date(0)).to eq('2018-03-14 03-14-00')
+    end
+  end
 end
