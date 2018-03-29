@@ -54,32 +54,32 @@ describe FileJournal do
   end
 
   describe '#title' do
-  it 'displays title of the chosen entry' do
-    journal = FileJournal.new
-    title = 'monday'
-    content = 'contentcontentcontent'
-    date = '2018-03-14 03-14-00'
+    it 'displays title of the chosen entry' do
+      journal = FileJournal.new
+      title = 'monday'
+      content = 'contentcontentcontent'
+      date = '2018-03-14 03-14-00'
 
-    journal.add_entry(content, title, date)
+      journal.add_entry(content, title, date)
 
-    x = journal.available_entries_count
+      x = journal.available_entries_count
 
-    expect(journal.title(x-1)).to eq('monday')
+      expect(journal.title(x-1)).to eq('monday')
     end
   end
 
   describe '#date' do
-  it 'displays date of the chosen entry' do
-    journal = FileJournal.new
-    title = 'monday'
-    content = 'contentcontentcontent'
-    date = '2018-03-14 03-14-00'
+    it 'displays date of the chosen entry' do
+      journal = FileJournal.new
+      title = 'monday'
+      content = 'contentcontentcontent'
+      date = '2018-03-14 03-14-00'
 
-    journal.add_entry(content, title, date)
+      journal.add_entry(content, title, date)
 
-    x = journal.available_entries_count
+      x = journal.available_entries_count
 
-    expect(journal.date(x-1)).to eq('2018-03-14 03-14-00')
+      expect(journal.date(x-1)).to eq('2018-03-14 03-14-00')
     end
   end
 
