@@ -1,7 +1,7 @@
 require "optparse"
-require_relative "menu"
-require_relative "lib/file_journal"
-require_relative "lib/memory_journal"
+require_relative "cli/menu"
+require_relative "../lib/file_journal"
+require_relative "../lib/memory_journal"
 
 options = {}
 
@@ -32,5 +32,5 @@ elsif options[:save] == "file"
   journal = FileJournal.new
 end
 
-menu = Menu.new(journal)
+menu = CLI::Menu.new(journal)
 menu.main_menu
