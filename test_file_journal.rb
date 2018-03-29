@@ -129,4 +129,25 @@ describe FileJournal do
       expect(journal.entries).not_to include journal.entries[x-1]
     end
   end
+
+  describe '#quit' do
+    it 'closes the application and saves entries to the file' do
+      journal = FileJournal.new
+      title = 'monday'
+      content = 'contentcontentcontent'
+      date = '2018-03-14 03-14-00'
+
+      journal.add_entry(content, title, date)
+
+      x = journal.available_entries_count
+
+      journal.quit
+
+      if File.exists?("journal_data.yaml")
+        test_container = YAML.load_file("journal_data.yaml")
+      end
+
+      expect(test_container.length).to eq(x)
+    end
+  end
 end
