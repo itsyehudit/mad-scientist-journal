@@ -20,4 +20,21 @@ describe FileJournal do
       expect(first_entry.date).to eq('2018-03-14 03-14-00')
     end
   end
+
+  describe '#available_entries_count' do
+    it 'returns number of available entries' do
+      journal = FileJournal.new
+      title = 'monday'
+      content = 'contentcontentcontent'
+      date = '2018-03-14 03-14-00'
+
+      x = journal.available_entries_count
+
+      journal.add_entry(content, title, date)
+      journal.add_entry(content, title, date)
+      journal.add_entry(content, title, date)
+
+      expect(journal.available_entries_count).to eq(x+3)
+    end
+  end
 end
