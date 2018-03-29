@@ -82,4 +82,28 @@ describe FileJournal do
     expect(journal.date(x-1)).to eq('2018-03-14 03-14-00')
     end
   end
+
+  describe '#edit_entry' do
+    it 'replaces a chosen entry with a new one' do
+      journal = FileJournal.new
+      title = 'monday'
+      content = 'contentcontentcontent'
+      date = '2018-03-14 03-14-00'
+
+      journal.add_entry(content, title, date)
+
+      new_title = 'Tuesday'
+      new_content = 'Today was a wonderful day'
+      new_date = '2018-03-15 04-01-00'
+
+      x = journal.available_entries_count
+
+      journal.edit_entry(x-1, new_content, new_title, new_date)
+
+      replacement_entry = journal.entries[x-1]
+      expect(replacement_entry.title).to eq('Tuesday')
+      expect(replacement_entry.content).to eq('Today was a wonderful day')
+      expect(replacement_entry.date).to eq('2018-03-15 04-01-00')
+    end
+  end
 end
