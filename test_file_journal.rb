@@ -52,4 +52,19 @@ describe FileJournal do
       expect(journal.content(x-1)).to eq('contentcontentcontent')
     end
   end
+
+  describe '#title' do
+  it 'displays title of the chosen entry' do
+    journal = FileJournal.new
+    title = 'monday'
+    content = 'contentcontentcontent'
+    date = '2018-03-14 03-14-00'
+
+    journal.add_entry(content, title, date)
+
+    x = journal.available_entries_count
+
+    expect(journal.title(x-1)).to eq('monday')
+    end
+  end
 end
