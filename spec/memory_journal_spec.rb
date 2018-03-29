@@ -1,5 +1,4 @@
-require 'rspec'
-require_relative 'memory_journal'
+require_relative '../memory_journal'
 
 describe MemoryJournal do
 

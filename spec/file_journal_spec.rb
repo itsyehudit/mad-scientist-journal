@@ -1,5 +1,4 @@
-require 'rspec'
-require_relative 'file_journal'
+require_relative '../file_journal'
 
 describe FileJournal do
 
