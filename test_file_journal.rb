@@ -106,4 +106,27 @@ describe FileJournal do
       expect(replacement_entry.date).to eq('2018-03-15 04-01-00')
     end
   end
+
+  describe '#delete_entry' do
+    it 'removes entry from the entries pool' do
+      journal = FileJournal.new
+      title = 'monday'
+      content = 'contentcontentcontent'
+      date = '2018-03-14 03-14-00'
+
+      journal.add_entry(content, title, date)
+
+      new_title = 'Tuesday'
+      new_content = 'Today was a wonderful day'
+      new_date = '2018-03-15 04-01-00'
+
+      journal.add_entry(new_content, new_title, new_date)
+
+      x = journal.available_entries_count
+
+      journal.delete_entry(0)
+
+      expect(journal.entries).not_to include journal.entries[x-1]
+    end
+  end
 end
