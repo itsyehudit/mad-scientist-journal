@@ -1,7 +1,7 @@
 require "optparse"
 require_relative "menu"
-require_relative "file_journal"
-require_relative "memory_journal"
+require_relative "lib/file_journal"
+require_relative "lib/memory_journal"
 
 options = {}
 
