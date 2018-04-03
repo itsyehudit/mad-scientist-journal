@@ -135,7 +135,12 @@ describe FileJournal do
 
       x = journal.available_entries_count
 
-      journal.delete_entry(0)
+      journal.delete_entry(x-2)
+
+      first_entry = journal.entries[x-2]
+      expect(first_entry.title).to eq('Tuesday')
+      expect(first_entry.content).to eq('Today was a wonderful day')
+      expect(first_entry.date).to eq('2018-03-15 04-01-00')
 
       expect(journal.entries).not_to include journal.entries[x-1]
 
