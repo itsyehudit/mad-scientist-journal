@@ -114,4 +114,10 @@ describe MemoryJournal do
       expect(journal.entries).not_to include journal.entries[1]
     end
   end
+
+  describe '#quit' do
+    it 'is expected to respond to quit for common journal interface' do
+      expect(MemoryJournal.new).to respond_to(:quit)
+    end
+  end
 end
