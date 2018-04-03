@@ -17,6 +17,8 @@ describe FileJournal do
       expect(first_entry.title).to eq('monday')
       expect(first_entry.content).to eq('contentcontentcontent')
       expect(first_entry.date).to eq('2018-03-14 03-14-00')
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -34,6 +36,8 @@ describe FileJournal do
       journal.add_entry(content, title, date)
 
       expect(journal.available_entries_count).to eq(x+3)
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -49,6 +53,8 @@ describe FileJournal do
       x = journal.available_entries_count
 
       expect(journal.content(x-1)).to eq('contentcontentcontent')
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -64,6 +70,8 @@ describe FileJournal do
       x = journal.available_entries_count
 
       expect(journal.title(x-1)).to eq('monday')
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -79,6 +87,8 @@ describe FileJournal do
       x = journal.available_entries_count
 
       expect(journal.date(x-1)).to eq('2018-03-14 03-14-00')
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -103,6 +113,8 @@ describe FileJournal do
       expect(replacement_entry.title).to eq('Tuesday')
       expect(replacement_entry.content).to eq('Today was a wonderful day')
       expect(replacement_entry.date).to eq('2018-03-15 04-01-00')
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -126,6 +138,8 @@ describe FileJournal do
       journal.delete_entry(0)
 
       expect(journal.entries).not_to include journal.entries[x-1]
+
+      File.delete('journal_data.yaml')
     end
   end
 
@@ -147,6 +161,8 @@ describe FileJournal do
       end
 
       expect(test_container.length).to eq(x)
+
+      File.delete('journal_data.yaml')
     end
   end
 end
