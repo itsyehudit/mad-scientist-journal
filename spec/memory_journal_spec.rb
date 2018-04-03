@@ -111,6 +111,11 @@ describe MemoryJournal do
 
       journal.delete_entry(0)
 
+      first_entry = journal.entries[0]
+      expect(first_entry.title).to eq('Tuesday')
+      expect(first_entry.content).to eq('Today was a wonderful day')
+      expect(first_entry.date).to eq('2018-03-15 04-01-00')
+
       expect(journal.entries).not_to include journal.entries[1]
     end
   end
