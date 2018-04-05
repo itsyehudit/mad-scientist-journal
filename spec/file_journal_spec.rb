@@ -128,7 +128,7 @@ describe FileJournal do
       expect(first_entry.content).to eq('Today was a wonderful day')
       expect(first_entry.date).to eq('2018-03-15 04-01-00')
 
-      expect(journal.entries).not_to include journal.entries[1]
+      expect(journal.available_entries_count).to eq(1)
 
       File.delete('journal_data.yaml')
     end
