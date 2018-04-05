@@ -11,9 +11,7 @@ describe FileJournal do
 
       journal.add_entry(content, title, date)
 
-      x = journal.available_entries_count
-
-      first_entry = journal.entries[x-1]
+      first_entry = journal.entries[0]
       expect(first_entry.title).to eq('monday')
       expect(first_entry.content).to eq('contentcontentcontent')
       expect(first_entry.date).to eq('2018-03-14 03-14-00')
@@ -29,13 +27,11 @@ describe FileJournal do
       content = 'contentcontentcontent'
       date = '2018-03-14 03-14-00'
 
-      x = journal.available_entries_count
-
       journal.add_entry(content, title, date)
       journal.add_entry(content, title, date)
       journal.add_entry(content, title, date)
 
-      expect(journal.available_entries_count).to eq(x+3)
+      expect(journal.available_entries_count).to eq(3)
 
       File.delete('journal_data.yaml')
     end
@@ -50,9 +46,7 @@ describe FileJournal do
 
       journal.add_entry(content, title, date)
 
-      x = journal.available_entries_count
-
-      expect(journal.content(x-1)).to eq('contentcontentcontent')
+      expect(journal.content(0)).to eq('contentcontentcontent')
 
       File.delete('journal_data.yaml')
     end
@@ -67,9 +61,7 @@ describe FileJournal do
 
       journal.add_entry(content, title, date)
 
-      x = journal.available_entries_count
-
-      expect(journal.title(x-1)).to eq('monday')
+      expect(journal.title(0)).to eq('monday')
 
       File.delete('journal_data.yaml')
     end
@@ -84,9 +76,7 @@ describe FileJournal do
 
       journal.add_entry(content, title, date)
 
-      x = journal.available_entries_count
-
-      expect(journal.date(x-1)).to eq('2018-03-14 03-14-00')
+      expect(journal.date(0)).to eq('2018-03-14 03-14-00')
 
       File.delete('journal_data.yaml')
     end
@@ -105,11 +95,9 @@ describe FileJournal do
       new_content = 'Today was a wonderful day'
       new_date = '2018-03-15 04-01-00'
 
-      x = journal.available_entries_count
+      journal.edit_entry(0, new_content, new_title, new_date)
 
-      journal.edit_entry(x-1, new_content, new_title, new_date)
-
-      replacement_entry = journal.entries[x-1]
+      replacement_entry = journal.entries[0]
       expect(replacement_entry.title).to eq('Tuesday')
       expect(replacement_entry.content).to eq('Today was a wonderful day')
       expect(replacement_entry.date).to eq('2018-03-15 04-01-00')
@@ -133,16 +121,14 @@ describe FileJournal do
 
       journal.add_entry(new_content, new_title, new_date)
 
-      x = journal.available_entries_count
+      journal.delete_entry(0)
 
-      journal.delete_entry(x-2)
-
-      first_entry = journal.entries[x-2]
+      first_entry = journal.entries[0]
       expect(first_entry.title).to eq('Tuesday')
       expect(first_entry.content).to eq('Today was a wonderful day')
       expect(first_entry.date).to eq('2018-03-15 04-01-00')
 
-      expect(journal.entries).not_to include journal.entries[x-1]
+      expect(journal.entries).not_to include journal.entries[1]
 
       File.delete('journal_data.yaml')
     end
