@@ -6,18 +6,19 @@ class FileJournal
 
   include Editable
 
-  def initialize
+  def initialize (filename = 'journal_data')
     @entries = []
+    @filename = filename
 
-    if File.exists?("journal_data.yaml")
-      @entries = YAML.load_file("journal_data.yaml") || []
+    if File.exists?("#{@filename}.yaml")
+      @entries = YAML.load_file("#{@filename}.yaml") || []
     else
-      File.new("journal_data.yaml", "w")
+      File.new("#{@filename}.yaml", "w")
     end
   end
 
   def quit
-    File.open("journal_data.yaml", "w") do |j|
+    File.open("#{@filename}.yaml", "w") do |j|
       j.write(@entries.to_yaml)
       j.close
     end
