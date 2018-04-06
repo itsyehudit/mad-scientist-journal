@@ -2,6 +2,14 @@ require_relative '../lib/file_journal'
 
 describe FileJournal do
 
+  before(:each) do
+    File.new('journal_data.yaml', 'w')
+  end
+
+  after(:each) do
+    File.delete('journal_data.yaml')
+  end
+
   describe '#add_entry' do
     it 'adds the entry to the entries pool' do
       journal = FileJournal.new
@@ -15,8 +23,6 @@ describe FileJournal do
       expect(first_entry.title).to eq('monday')
       expect(first_entry.content).to eq('contentcontentcontent')
       expect(first_entry.date).to eq('2018-03-14 03-14-00')
-
-      File.delete('journal_data.yaml')
     end
   end
 
@@ -32,8 +38,6 @@ describe FileJournal do
       journal.add_entry(content, title, date)
 
       expect(journal.available_entries_count).to eq(3)
-
-      File.delete('journal_data.yaml')
     end
   end
 
@@ -47,8 +51,6 @@ describe FileJournal do
       journal.add_entry(content, title, date)
 
       expect(journal.content(0)).to eq('contentcontentcontent')
-
-      File.delete('journal_data.yaml')
     end
   end
 
@@ -62,8 +64,6 @@ describe FileJournal do
       journal.add_entry(content, title, date)
 
       expect(journal.title(0)).to eq('monday')
-
-      File.delete('journal_data.yaml')
     end
   end
 
@@ -77,8 +77,6 @@ describe FileJournal do
       journal.add_entry(content, title, date)
 
       expect(journal.date(0)).to eq('2018-03-14 03-14-00')
-
-      File.delete('journal_data.yaml')
     end
   end
 
@@ -101,8 +99,6 @@ describe FileJournal do
       expect(replacement_entry.title).to eq('Tuesday')
       expect(replacement_entry.content).to eq('Today was a wonderful day')
       expect(replacement_entry.date).to eq('2018-03-15 04-01-00')
-
-      File.delete('journal_data.yaml')
     end
   end
 
@@ -120,17 +116,13 @@ describe FileJournal do
       new_date = '2018-03-15 04-01-00'
 
       journal.add_entry(new_content, new_title, new_date)
-
       journal.delete_entry(0)
 
       first_entry = journal.entries[0]
       expect(first_entry.title).to eq('Tuesday')
       expect(first_entry.content).to eq('Today was a wonderful day')
       expect(first_entry.date).to eq('2018-03-15 04-01-00')
-
       expect(journal.available_entries_count).to eq(1)
-
-      File.delete('journal_data.yaml')
     end
   end
 
