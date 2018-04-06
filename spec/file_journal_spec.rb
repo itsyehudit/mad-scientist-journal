@@ -142,18 +142,10 @@ describe FileJournal do
       date = '2018-03-14 03-14-00'
 
       journal.add_entry(content, title, date)
-
-      x = journal.available_entries_count
-
       journal.quit
 
-      if File.exists?("journal_data.yaml")
-        test_container = YAML.load_file("journal_data.yaml")
-      end
-
-      expect(test_container.length).to eq(x)
-
-      File.delete('journal_data.yaml')
+      test_container = YAML.load_file("journal_data.yaml")
+      expect(test_container.length).to eq(journal.available_entries_count)
     end
   end
 end
