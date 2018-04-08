@@ -1,6 +1,8 @@
 require_relative "editable"
 
 class MemoryJournal
+  attr_accessor :entries
+
   include Editable
 
   def initialize
