@@ -8,3 +8,19 @@ get '/' do
   @title = "Main Menu"
   haml :index
 end
+
+get '/add' do
+  @title = "Add Entry"
+  haml :add_entry
+end
+
+post '/add' do
+  journal=FileJournal.new
+  title = params[:title]
+  content = params[:content]
+  date = Time.now
+  journal.add_entry(content, title, date)
+  journal.quit
+
+  redirect "/view"
+end

@@ -1,0 +1,6 @@
+%nav.entries-menu-wrapper
+  %h1 ADD ENTRY
+  %form{action: "/add", method: "POST"}
+    %input{name: "title", type: "text", placeholder: "Entry your title"}
+    %textarea{name: "content", type: "text", rows: "10", cols: "50", placeholder: "Your entry"}
+    %input{type: "submit", value: "Add"}
