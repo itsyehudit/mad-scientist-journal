@@ -65,3 +65,20 @@ post '/edit/:index' do
 
   redirect "/view/#{id}"
 end
+
+get '/delete/:index' do
+  journal=FileJournal.new
+  @id = params[:index].to_i
+  @entry = journal.entries[@id]
+  @title = "Delete entry no. #{@id}"
+  haml :entry_deletion
+end
+
+post '/delete/:index' do
+  journal=FileJournal.new
+  id = params[:index].to_i
+  journal.delete_entry(id)
+  journal.quit
+
+  redirect "/view"
+end
