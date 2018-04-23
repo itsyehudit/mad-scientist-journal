@@ -1,0 +1,21 @@
+%nav.entries-menu-wrapper
+  %table.entry-table
+    %tr.entry-table__row
+      %td.entry-table__data
+        %a{href: "/edit/#{@id}"}EDIT
+      %td.entry-table__data
+        %a{href: "/delete/#{@id}"}DELETE
+    %tr.entry-table__row
+      %td.entry-table__data
+        %h1= @entry.title
+    %tr.entry-table__row
+      %td.entry-table__data
+        %h5= @entry.date
+    %tr.entry-table__row
+      %td.entry-table__data
+        %p= @entry.content
+    %tr.entry-table__row
+      %td.entry-table__data-options
+        %a{href: "/view"} Choose another entry
+      %td.entry-table__data-options
+        %a{href: "/"} Go back to menu

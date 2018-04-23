@@ -36,3 +36,11 @@ get '/view' do
   @title = "Entries"
   haml :view
 end
+
+get '/view/:index' do
+  journal=FileJournal.new
+  @id = params[:index].to_i
+  @entry = journal.entries[@id]
+  @title = "Entry no. #{@id}"
+  haml :entry
+end
