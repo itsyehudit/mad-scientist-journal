@@ -44,3 +44,24 @@ get '/view/:index' do
   @title = "Entry no. #{@id}"
   haml :entry
 end
+
+get '/edit/:index' do
+  journal=FileJournal.new
+  @id = params[:index].to_i
+  @entry = journal.entries[@id]
+  @title = "Edit entry no. #{@id}"
+  haml :entry_edition
+end
+
+post '/edit/:index' do
+  journal=FileJournal.new
+  id = params[:index].to_i
+  entry = journal.entries[id]
+  title = params[:title]
+  content = params[:content]
+  date = entry.date
+  journal.edit_entry(id, content, title, date)
+  journal.quit
+
+  redirect "/view/#{id}"
+end

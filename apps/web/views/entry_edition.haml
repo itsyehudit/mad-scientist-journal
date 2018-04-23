@@ -1,0 +1,7 @@
+%nav.entries-menu-wrapper
+  %h1 EDIT ENTRY
+  %form{action: "/edit/#{@id}", method: "POST"}
+    %input{name: "title", type: "text", value: @entry.title}
+    %input{name: "date", type: "text", disabled: "true", placeholder: @entry.date}
+    %textarea{name: "content", type: "text", rows: "10", cols: "50"}= @entry.content
+    %input{type: "submit", value: "edit"}
