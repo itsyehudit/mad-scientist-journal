@@ -25,11 +25,6 @@ post '/add' do
   redirect "/view"
 end
 
-get '/entries_menu' do
-  @title = "Entries menu"
-  haml :entries_menu
-end
-
 get '/view' do
   journal=FileJournal.new
   @entries = journal.entries
