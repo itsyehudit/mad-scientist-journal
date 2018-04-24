@@ -1,17 +1,11 @@
 %nav.entries-menu-wrapper
-  %h2 Are you sure you want to delete this entry?
-  %form{action: "/delete/#{@id}", method: "POST"}
-    %input{type: "submit", value: "YES"}
-  %form{action: "/view/#{@id}"}
-    %input{type: "submit", value: "NO"}
-  %br
-  %table.entry-table
-    %tr.entry-table__row
-      %td.entry-table__data
-        %h1= @entry.title
-    %tr.entry-table__row
-      %td.entry-table__data
-        %h5= @entry.date
-    %tr.entry-table__row
-      %td.entry-table__data
-        %p= @entry.content
+  %div.entry-wrapper
+    %h2.header Are you sure you want to delete this entry?
+    %div.entry-title= @entry.title
+    %div.entry-date= @entry.date
+    %div.entry-content= @entry.content
+    %div.button-wrapper
+      %form.button{action: "/delete/#{@id}", method: "POST"}
+        %input{type: "submit", value: "Yes"}
+      %form.button{action: "/view/#{@id}"}
+        %input{type: "submit", value: "No"}

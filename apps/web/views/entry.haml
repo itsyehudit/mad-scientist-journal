@@ -1,21 +1,15 @@
 %nav.entries-menu-wrapper
-  %table.entry-table
-    %tr.entry-table__row
-      %td.entry-table__data
-        %a{href: "/edit/#{@id}"}EDIT
-      %td.entry-table__data
-        %a{href: "/delete/#{@id}"}DELETE
-    %tr.entry-table__row
-      %td.entry-table__data
-        %h1= @entry.title
-    %tr.entry-table__row
-      %td.entry-table__data
-        %h5= @entry.date
-    %tr.entry-table__row
-      %td.entry-table__data
-        %p= @entry.content
-    %tr.entry-table__row
-      %td.entry-table__data-options
-        %a{href: "/view"} Choose another entry
-      %td.entry-table__data-options
-        %a{href: "/"} Go back to menu
+  %div.entry-wrapper
+    %div.button-wrapper
+      %form.button{action: "/edit/#{@id}"}
+        %input{type: "submit", value: "Edit"}
+      %form.button{action: "/delete/#{@id}"}
+        %input{type: "submit", value: "Delete"}
+    %div.entry-title= @entry.title
+    %div.entry-date= @entry.date
+    %div.entry-content= @entry.content
+    %div.button-wrapper
+      %form.button{action: "/view"}
+        %input{type: "submit", value: "Entry list"}
+      %form.button{action: "/"}
+        %input{type: "submit", value: "Main Menu"}
