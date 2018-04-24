@@ -40,7 +40,7 @@ body {
 .entries-menu {
   width: 50%;
   margin-top: 9vh;
-  margin-left: 5vw;
+  margin-left: 4vw;
   list-style-type: none;
   text-align: left;
   overflow-wrap: break-word;
@@ -56,9 +56,21 @@ body {
 .entries-menu__item-link {
   text-decoration: none;
   color: black;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 35px;
   overflow-wrap: break-word;
+}
+
+.entries-menu__item-link--edit {
+  text-decoration: none;
+  color: #006ac1;
+  font-size: 12px;
+}
+
+.entries-menu__item-link--delete {
+  text-decoration: none;
+  color: #cc0000;
+  font-size: 12px
 }
 
 .entry-wrapper {
@@ -110,4 +122,9 @@ body {
 .button {
   display: inline-block;
   margin: 0 30px 0 30px;
+}
+
+.button__entry-list {
+  display: inline-block;
+  margin-top: 2vh;
 }
