@@ -10,7 +10,7 @@ body {
 .main-menu-wrapper {
   width: auto;
   height: 90vh;
-  background-image: url("https://i.imgur.com/yOluG2D.jpg");
+  background-image: url("/main.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -22,7 +22,7 @@ body {
 .entries-menu-wrapper {
   width: 50%;
   height: 90vh;
-  background-image: url("https://i.imgur.com/5W3ePlt.jpg");
+  background-image: url("/page.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 5vh;
