@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
 gem 'sinatra'
 gem 'haml'
-gem 'shotgun'
+
+group :development do
+  gem 'shotgun'
+  gem 'rspec'
+end
+
+group :test do
+  gem 'rspec'
+end
