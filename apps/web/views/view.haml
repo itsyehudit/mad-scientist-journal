@@ -2,11 +2,11 @@
   %ul.entries-menu
     - @entries.each_with_index do |entry, index|
       %li.entries-menu__item
-        [
-        %a.entries-menu__item-link--edit{href: "/edit/#{index}"}EDIT
+        %form.entries-menu__item-link--edit{action: "/edit/#{index}"}
+          %input{type: "submit", value: "Edit"}
         |
-        %a.entries-menu__item-link--delete{href: "/delete/#{index}"}DEL
-        ]
+        %form.entries-menu__item-link--delete{action: "/delete/#{index}", method: "POST"}
+          %input{type: "submit", value: "Del"}
         %a.entries-menu__item-link{href: "/view/#{index}"}= "#{index+1}. #{entry.title}"
 
 

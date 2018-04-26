@@ -65,12 +65,14 @@ body {
   text-decoration: none;
   color: #006ac1;
   font-size: 12px;
+  display: inline-block;
 }
 
 .entries-menu__item-link--delete {
   text-decoration: none;
   color: #cc0000;
-  font-size: 12px
+  font-size: 12px;
+  display: inline-block;
 }
 
 .entry-wrapper {

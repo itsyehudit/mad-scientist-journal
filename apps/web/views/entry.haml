@@ -3,7 +3,7 @@
     %div.button-wrapper
       %form.button{action: "/edit/#{@id}"}
         %input{type: "submit", value: "Edit"}
-      %form.button{action: "/delete/#{@id}"}
+      %form.button{action: "/delete/#{@id}", method: "POST"}
         %input{type: "submit", value: "Delete"}
     %div.entry-title= @entry.title
     %div.entry-date= @entry.date
