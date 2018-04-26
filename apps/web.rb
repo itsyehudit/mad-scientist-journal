@@ -15,7 +15,7 @@ get '/add' do
 end
 
 post '/add' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   title = params[:title]
   content = params[:content]
   date = Time.now
@@ -26,14 +26,14 @@ post '/add' do
 end
 
 get '/view' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   @entries = journal.entries
   @title = "Entries"
   haml :view
 end
 
 get '/view/:index' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   @id = params[:index].to_i
   @entry = journal.entries[@id]
   @title = "Entry no. #{@id}"
@@ -41,7 +41,7 @@ get '/view/:index' do
 end
 
 get '/edit/:index' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   @id = params[:index].to_i
   @entry = journal.entries[@id]
   @title = "Edit entry no. #{@id}"
@@ -49,7 +49,7 @@ get '/edit/:index' do
 end
 
 post '/edit/:index' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   id = params[:index].to_i
   entry = journal.entries[id]
   title = params[:title]
@@ -62,7 +62,7 @@ post '/edit/:index' do
 end
 
 get '/delete/:index' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   @id = params[:index].to_i
   @entry = journal.entries[@id]
   @title = "Delete entry no. #{@id}"
@@ -70,7 +70,7 @@ get '/delete/:index' do
 end
 
 post '/delete/:index' do
-  journal=FileJournal.new
+  journal = FileJournal.new
   id = params[:index].to_i
   journal.delete_entry(id)
   journal.quit
