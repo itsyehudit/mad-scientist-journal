@@ -10,7 +10,7 @@ body {
 .main-menu-wrapper {
   width: auto;
   height: 90vh;
-  background-image: url("/main.jpg");
+  background-image: url("../images/main.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -22,7 +22,7 @@ body {
 .entries-menu-wrapper {
   width: 50%;
   height: 90vh;
-  background-image: url("/page.jpg");
+  background-image: url("../images/page.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 5vh;
