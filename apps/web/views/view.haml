@@ -1,0 +1,14 @@
+%nav.entries-menu-wrapper
+  %ul.entries-menu
+    - @entries.each_with_index do |entry, index|
+      %li.entries-menu__item
+        %form.entries-menu__item-link--edit{action: "/edit/#{index}"}
+          %input{type: "submit", value: "Edit"}
+        |
+        %form.entries-menu__item-link--delete{action: "/delete/#{index}", method: "POST"}
+          %input{type: "submit", value: "Del"}
+        %a.entries-menu__item-link{href: "/view/#{index}"}= "#{index+1}. #{entry.title}"
+
+
+    %form.button__entry-list{action: "/"}
+      %input{type: "submit", value: "Main Menu"}
