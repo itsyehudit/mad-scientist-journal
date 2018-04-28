@@ -18,7 +18,8 @@ post '/add' do
   journal = FileJournal.new
   title = params[:title]
   content = params[:content]
-  date = Time.now
+  local_date = Time.now
+  date = local_date.utc
   journal.add_entry(content, title, date)
   journal.quit
 

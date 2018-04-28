@@ -6,7 +6,9 @@
       %form.button{action: "/delete/#{@id}", method: "POST"}
         %input{type: "submit", value: "Delete"}
     %div.entry-title= @entry.title
-    %div.entry-date= @entry.date
+    - temp_date = @entry.date
+    - local_date = temp_date.localtime
+    %div.entry-date= local_date
     %div.entry-content= @entry.content
     %div.button-wrapper
       %form.button{action: "/view"}
